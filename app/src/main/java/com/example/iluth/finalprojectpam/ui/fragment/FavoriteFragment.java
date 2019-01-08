@@ -1,4 +1,4 @@
-package com.example.iluth.finalprojectpam;
+package com.example.iluth.finalprojectpam.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class TeamFragment extends Fragment {
+import com.example.iluth.finalprojectpam.R;
+
+public class FavoriteFragment extends Fragment {
 
     private View view;
 
@@ -16,7 +18,7 @@ public class TeamFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.fragment_spinner_recyclerview,container,false);
+        view = inflater.inflate(R.layout.fragment_tab_pager,container,false);
         return view;
     }
 }
