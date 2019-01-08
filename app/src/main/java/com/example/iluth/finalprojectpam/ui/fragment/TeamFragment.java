@@ -49,8 +49,6 @@ public class TeamFragment extends Fragment implements TeamContract.view {
         teamsItems = new ArrayList<>();
         teamAdapter = new TeamAdapter(getContext(), teamsItems);
         teamPresenter = new TeamPresenter(this);
-        teamPresenter.getAllTeamInLeague(leagueIDs[0]);
-
     }
 
     @Nullable

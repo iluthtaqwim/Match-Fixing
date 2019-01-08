@@ -2,6 +2,7 @@ package com.example.iluth.finalprojectpam.retrofit;
 
 import com.example.iluth.finalprojectpam.model.EventResponse;
 import com.example.iluth.finalprojectpam.model.TeamResponse;
+import com.example.iluth.finalprojectpam.model.TeamsItem;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -22,5 +23,11 @@ public interface TheSportDBInterface {
     Call<TeamResponse> getAllTeamInLeague(
             @Query("id") String leagueId
     );
+
+    @GET("lookupteam.php")
+    Call<TeamResponse> getTeamDetail(
+            @Query("id") String teamId
+    );
+
 
 }

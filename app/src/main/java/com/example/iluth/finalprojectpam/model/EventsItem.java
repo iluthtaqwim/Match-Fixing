@@ -4,7 +4,9 @@ import android.support.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class EventsItem{
+import java.io.Serializable;
+
+public class EventsItem implements Serializable {
 
 	@SerializedName("intHomeShots")
 	private String intHomeShots;

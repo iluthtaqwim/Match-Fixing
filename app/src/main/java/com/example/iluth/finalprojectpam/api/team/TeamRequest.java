@@ -2,6 +2,7 @@ package com.example.iluth.finalprojectpam.api.team;
 
 import com.example.iluth.finalprojectpam.model.EventResponse;
 import com.example.iluth.finalprojectpam.model.TeamResponse;
+import com.example.iluth.finalprojectpam.model.TeamsItem;
 import com.example.iluth.finalprojectpam.presenter.team.TeamContract;
 import com.example.iluth.finalprojectpam.retrofit.RetrofitClient;
 import com.example.iluth.finalprojectpam.retrofit.TheSportDBInterface;
@@ -36,6 +37,16 @@ public class TeamRequest implements TeamContract.interactor {
 
     @Override
     public void getTeamDetail(String teamId) {
+        api.getTeamDetail(teamId).enqueue(new Callback<TeamResponse>() {
+            @Override
+            public void onResponse(Call<TeamResponse> call, Response<TeamResponse> response) {
+                presenter.onRequestSuccess(response.body());
+            }
 
+            @Override
+            public void onFailure(Call<TeamResponse> call, Throwable t) {
+                presenter.onRequestFailed(t);
+            }
+        });
     }
 }

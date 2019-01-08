@@ -2,6 +2,7 @@ package com.example.iluth.finalprojectpam.ui.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.example.iluth.finalprojectpam.R;
 import com.example.iluth.finalprojectpam.model.EventResponse;
 import com.example.iluth.finalprojectpam.model.EventsItem;
+import com.example.iluth.finalprojectpam.ui.activity.EventDetailActivity;
 
 import java.util.List;
 
@@ -58,10 +60,11 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             textviewtanggal = itemView.findViewById(R.id.tvMatchDate);
             tvHomeScore = itemView.findViewById(R.id.tvHomeScore);
             tvAwayScore = itemView.findViewById(R.id.tvAwayScore);
+
         }
 
         @SuppressLint("DefaultLocale")
-        public void bindData(EventsItem eventsItem){
+        public void bindData(final EventsItem eventsItem){
             textviewhome.setText(eventsItem.getStrHomeTeam());
             textviewaway.setText(eventsItem.getStrAwayTeam());
             textviewtanggal.setText(eventsItem.getStrDate());
@@ -73,7 +76,15 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             if(eventsItem.getIntAwayScore() != null){
                 tvAwayScore.setText(eventsItem.getIntAwayScore());
             }
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    /*TODO create EventDetailActivity*/
+                    Intent intent = new Intent(context, EventDetailActivity.class);
+                    intent.putExtra("event", eventsItem);
+                    context.startActivity(intent);
+                }
+            });
         }
 
     }

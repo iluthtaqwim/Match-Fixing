@@ -4,6 +4,17 @@
     <string name="Team">Team</string>
     <string name="favorite">Favorite</string>
     <string name="versus">Versus</string>
+    <string name="hometeam">hometeam</string>
+    <string name="awayteam">awayteam</string>
+    <string name="goals">goals</string>
+    <string name="shots">shots</string>
+    <string name="lineups">lineup</string>
+    <string name="goalkeeper">goalkeeper</string>
+    <string name="defense">defense</string>
+    <string name="midlefield">midlefielder</string>
+    <string name="forward">forward</string>
+    <string name="subtituties">substituties</string>
+    <string name="team_badge">\@null</string>
     <array name="ALL_LEAGUE_NAMES">
         <item>English Premier League</item>
         <item>English League Championship</item>

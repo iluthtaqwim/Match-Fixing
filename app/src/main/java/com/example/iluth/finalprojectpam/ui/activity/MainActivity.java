@@ -8,15 +8,21 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.iluth.finalprojectpam.R;
+import com.example.iluth.finalprojectpam.model.EventsItem;
+import com.example.iluth.finalprojectpam.model.TeamsItem;
 import com.example.iluth.finalprojectpam.ui.fragment.FavoriteFragment;
 import com.example.iluth.finalprojectpam.ui.fragment.MatchFragment;
 import com.example.iluth.finalprojectpam.ui.fragment.TeamFragment;
+
+import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView btmview;
     private String matchFragmentTAG, teamFragmentTAG, favoriteFragmentTAG;
     private Fragment matchFragment, teamFragment, favoriteFragment;
+    private TeamsItem teamDetail;
+    private EventsItem eventsItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +31,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         btmview = findViewById(R.id.btmnav);
         btmview.setOnNavigationItemSelectedListener(this);
 
+        teamDetail = (TeamsItem) getIntent().getSerializableExtra("team");
+        eventsItem = (EventsItem) getIntent().getSerializableExtra("event");
+
         matchFragmentTAG = MatchFragment.class.getSimpleName();
         teamFragmentTAG = TeamFragment.class.getSimpleName();
         favoriteFragmentTAG = FavoriteFragment.class.getSimpleName();
         initiateFragments();
+
     }
 
     private void initiateFragments() {

@@ -2,7 +2,9 @@ package com.example.iluth.finalprojectpam.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class TeamsItem{
+import java.io.Serializable;
+
+public class TeamsItem implements Serializable {
 
 	@SerializedName("intStadiumCapacity")
 	private String intStadiumCapacity;

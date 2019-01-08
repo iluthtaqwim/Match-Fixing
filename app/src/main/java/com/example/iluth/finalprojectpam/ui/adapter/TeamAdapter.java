@@ -2,6 +2,7 @@ package com.example.iluth.finalprojectpam.ui.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -54,7 +55,16 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
         }
 
         @SuppressLint("DefaultLocale")
-        public void bindData(TeamsItem teamsItem){
+        public void bindData(final TeamsItem teamsItem){
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    /*TODO create TeamDetailActivity*/
+//                    Intent intent = new Intent(context, TeamDetailActivity.class);
+//                    intent.putExtra("team", teamsItem);
+//                    context.startActivity(intent);
+                }
+            });
             tvTeamName.setText(teamsItem.getStrTeam());
             Picasso.get().load(teamsItem.getStrTeamBadge()).fit().into(imgTeamBadge);
         }
