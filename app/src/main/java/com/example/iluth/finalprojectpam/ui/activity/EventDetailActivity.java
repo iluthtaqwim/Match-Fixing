@@ -1,10 +1,12 @@
 package com.example.iluth.finalprojectpam.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,15 +21,62 @@ import com.example.iluth.finalprojectpam.presenter.team.TeamContract;
 import com.example.iluth.finalprojectpam.presenter.team.TeamPresenter;
 import com.squareup.picasso.Picasso;
 
-public class EventDetailActivity extends AppCompatActivity implements TeamContract.view {
+import com.allyants.notifyme.NotifyMe;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
+
+import java.util.Calendar;
+
+public class EventDetailActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener,TeamContract.view {
+
+    Calendar now = Calendar.getInstance();
+    TimePickerDialog tpd;
+    DatePickerDialog dpd;
 
     ToggleButton toggleButton;
     DatabaseHelper mDatabaseHelper;
     private TeamPresenter teamPresenter;
     private ImageView imageHome;
     private ImageView imageAway;
-    private TextView tvEventDate,tvEventTime,tvHomeClub, tvHomeScore, tvHomeGoals, tvHomeShots, tvHomeGoalkeeper, tvHomeDefense, tvHomeMidlefield, tvHomeForward, tvHomeSubtituties, tvAwayClub, tvAwayScore, tvAwayGoals, tvAwayShots, tvAwayGoalkeeper, tvAwayDefense, tvAwayMidlefield, tvAwayForward, tvAwaySubtituties;
+    private TextView tvEventDate, tvEventTime, tvHomeClub, tvHomeScore, tvHomeGoals, tvHomeShots, tvHomeGoalkeeper, tvHomeDefense, tvHomeMidlefield, tvHomeForward, tvHomeSubtituties, tvAwayClub, tvAwayScore, tvAwayGoals, tvAwayShots, tvAwayGoalkeeper, tvAwayDefense, tvAwayMidlefield, tvAwayForward, tvAwaySubtituties;
     private EventsItem eventsItem;
+
+
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        now.set(Calendar.YEAR, year);
+        now.set(Calendar.MONTH, monthOfYear);
+        now.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        tpd.show(getFragmentManager(), "Timepickerdialog");
+    }
+
+    @Override
+    public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
+        String home = eventsItem.getStrHomeTeam();
+        String away = eventsItem.getStrAwayTeam();
+        eventsItem = (EventsItem) getIntent().getSerializableExtra("event");
+        now.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        now.set(Calendar.MINUTE, minute);
+        now.set(Calendar.SECOND, second);
+        Intent intent = new Intent(getApplicationContext(), TestActivity.class);
+        intent.putExtra("test", "I am a String");
+        NotifyMe notifyMe = new NotifyMe.Builder(getApplicationContext())
+                .title(home + " vs " + away)
+                .content(eventsItem.getStrDate())
+                .color(255, 0, 0, 255)
+                .led_color(255, 255, 255, 255)
+                .time(now)
+                .addAction(intent, "Snooze", false)
+                .key("test")
+                .addAction(new Intent(), "Dismiss", true, false)
+                .addAction(intent, "Done")
+                .large_icon(R.mipmap.ic_launcher_round)
+                .build();
+    }
+
+
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +104,30 @@ public class EventDetailActivity extends AppCompatActivity implements TeamContra
         teamPresenter = new TeamPresenter(this);
 
         loadData();
+
+        Button btnNotify = findViewById(R.id.btnNotify);
+
+
+        dpd = DatePickerDialog.newInstance(
+                EventDetailActivity.this,
+                now.get(Calendar.YEAR),
+                now.get(Calendar.MONTH),
+                now.get(Calendar.DAY_OF_MONTH)
+        );
+
+        tpd = TimePickerDialog.newInstance(
+                EventDetailActivity.this,
+                now.get(Calendar.HOUR_OF_DAY),
+                now.get(Calendar.MINUTE),
+                now.get(Calendar.SECOND),
+                false
+        );
+        btnNotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dpd.show(getFragmentManager(), "Datepickerdialog");
+            }
+        });
     }
 
     private void loadData() {
