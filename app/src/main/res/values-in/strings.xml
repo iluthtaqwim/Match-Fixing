@@ -16,6 +16,7 @@
     <string name="forward">Penyerang</string>
     <string name="subtituties">Pergantian</string>
     <string name="team_badge">\@null</string>
+    <string name="buat_notif">Buat Notif</string>
     <array name="ALL_LEAGUE_NAMES">
         <item>Liga Inggris</item>
         <item>Kejuaran Liga Inggris</item>

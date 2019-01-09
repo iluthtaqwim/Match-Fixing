@@ -25,7 +25,18 @@
                 android:layout_centerVertical="true"
                 android:textOn=""
                 android:textOff="" />
+
+            <Button
+                android:id="@+id/btnNotify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:width="50pt"
+                android:background="#55000000"
+                android:text="@string/buat_notif" />
+
         </android.support.v7.widget.Toolbar>
+
 
 
 
@@ -447,6 +458,8 @@
                 android:textAlignment="viewEnd"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+
         </android.support.constraint.ConstraintLayout>
 
     </ScrollView>
