@@ -29,11 +29,20 @@
             <Button
                 android:id="@+id/btnNotify"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="18pt"
                 android:layout_marginLeft="30dp"
                 android:width="50pt"
                 android:background="#55000000"
                 android:text="@string/buat_notif" />
+            <Button
+                android:id="@+id/share"
+                android:layout_width="wrap_content"
+                android:layout_height="18pt"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="right"
+                android:width="50pt"
+                android:background="#55000000"
+                android:text="@string/share" />
 
         </android.support.v7.widget.Toolbar>
 
