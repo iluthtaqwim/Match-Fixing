@@ -1,10 +1,13 @@
 package com.example.iluth.finalprojectpam.ui.activity;
 
+import android.content.Intent;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.iluth.finalprojectpam.R;
@@ -39,6 +42,24 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         favoriteFragmentTAG = FavoriteFragment.class.getSimpleName();
         initiateFragments();
 
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.list_option, menu);
+
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id ==R.id.btm_setting){
+            Intent intent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+            startActivity(intent);
+        }else {
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void initiateFragments() {

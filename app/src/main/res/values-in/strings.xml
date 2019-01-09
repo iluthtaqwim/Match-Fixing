@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="match">Pertandingan</string>
+    <string name="Team">Tim</string>
+    <string name="favorite">Favorit</string>
+    <string name="bahasa">Ubah Bahasa</string>
+    <string name="versus">Melawan</string>
+    <string name="hometeam">Kandang</string>
+    <string name="awayteam">Tandang</string>
+    <string name="goals">Gol</string>
+    <string name="shots">Tendangan</string>
+    <string name="lineups">Barisan</string>
+    <string name="goalkeeper">Penjaga Gawang</string>
+    <string name="defense">Pertahanan</string>
+    <string name="midlefield">Pemain Tengah</string>
+    <string name="forward">Penyerang</string>
+    <string name="subtituties">Pergantian</string>
+    <string name="team_badge">\@null</string>
+    <array name="ALL_LEAGUE_NAMES">
+        <item>Liga Inggris</item>
+        <item>Kejuaran Liga Inggris</item>
+        <item>Liga German</item>
+        <item>Liga Itali A</item>
+        <item>Liga Francis 1</item>
+        <item>Liga Spanyol</item>
+    </array>
+</resources>
