@@ -43,6 +43,7 @@ public class EventDetailActivity extends AppCompatActivity implements DatePicker
     private TextView tvEventDate, tvEventTime, tvHomeClub, tvHomeScore, tvHomeGoals, tvHomeShots, tvHomeGoalkeeper, tvHomeDefense, tvHomeMidlefield, tvHomeForward, tvHomeSubtituties, tvAwayClub, tvAwayScore, tvAwayGoals, tvAwayShots, tvAwayGoalkeeper, tvAwayDefense, tvAwayMidlefield, tvAwayForward, tvAwaySubtituties;
     private EventsItem eventsItem;
 
+    Button button;
 
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
@@ -78,8 +79,6 @@ public class EventDetailActivity extends AppCompatActivity implements DatePicker
 
 
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +108,20 @@ public class EventDetailActivity extends AppCompatActivity implements DatePicker
         teamPresenter = new TeamPresenter(this);
 
         loadData();
+
+        button = (Button) findViewById(R.id.share);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                myIntent.setType("text/plain");
+                String shareBody = "Your body is here";
+                String shareSub = "Your subject";
+                myIntent.putExtra(Intent.EXTRA_SUBJECT, shareBody);
+                myIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(myIntent, "Share using"));
+            }
+        });
 
         Button btnNotify = findViewById(R.id.btnNotify);
 

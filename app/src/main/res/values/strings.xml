@@ -17,6 +17,9 @@
     <string name="subtituties">substituties</string>
     <string name="team_badge">\@null</string>
     <string name="buat_notif">Make Notif</string>
+    <string name="share">Share</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
     <array name="ALL_LEAGUE_NAMES">
         <item>English Premier League</item>
         <item>English League Championship</item>
