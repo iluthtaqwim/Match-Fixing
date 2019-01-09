@@ -50,16 +50,26 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+        switch(item.getItemId()) {
 
-        if (id ==R.id.btm_setting){
-            Intent intent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
-            startActivity(intent);
-        }else {
-
+            case R.id.btm_setting:
+                Intent intent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+                startActivity(intent);
+                break;
+            case R.id.btm_match:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btm_team:
+                replaceFragment(teamFragment, matchFragment, favoriteFragment);
+                break;
+            case R.id.btm_fav:
+                replaceFragment(favoriteFragment, teamFragment, matchFragment);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     private void initiateFragments() {
