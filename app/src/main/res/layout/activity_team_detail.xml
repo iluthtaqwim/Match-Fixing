@@ -21,8 +21,8 @@
 
         <ImageView
             android:id="@+id/imgTeamBadge"
-            android:layout_width="@dimen/image_detail_badge"
-            android:layout_height="@dimen/image_detail_badge"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/team_badge"
             tools:src="@mipmap/ic_launcher" />
@@ -70,9 +70,13 @@
             app:tabTextColor="@android:color/white" />
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vpTeamMenu"
+    <TextView
+        android:id="@+id/tvDesc"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:textAlignment="center"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"/>
 
 </LinearLayout>

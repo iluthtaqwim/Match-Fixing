@@ -16,15 +16,6 @@
         android:layout_height="match_parent"
         android:layout_margin="8dp">
 
-        <ImageView
-            android:id="@+id/imgReminder"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_alert"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/tvMatchDate"
             android:layout_width="wrap_content"

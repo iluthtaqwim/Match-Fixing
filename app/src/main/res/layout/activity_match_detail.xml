@@ -15,7 +15,19 @@
             android:layout_height="wrap_content"
             android:minHeight="?actionBarSize"
             app:subtitleTextColor="@android:color/white"
-            app:titleTextColor="@android:color/white" />
+            app:titleTextColor="@android:color/white">
+
+            <ToggleButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:id="@+id/myToggleButton"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textOn=""
+                android:textOff="" />
+        </android.support.v7.widget.Toolbar>
+
+
 
     </android.support.design.widget.AppBarLayout>
 

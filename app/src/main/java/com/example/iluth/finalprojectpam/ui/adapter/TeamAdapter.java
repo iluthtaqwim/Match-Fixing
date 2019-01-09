@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.iluth.finalprojectpam.R;
 import com.example.iluth.finalprojectpam.model.EventsItem;
 import com.example.iluth.finalprojectpam.model.TeamsItem;
+import com.example.iluth.finalprojectpam.ui.activity.TeamDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -59,10 +60,10 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    /*TODO create TeamDetailActivity*/
-//                    Intent intent = new Intent(context, TeamDetailActivity.class);
-//                    intent.putExtra("team", teamsItem);
-//                    context.startActivity(intent);
+
+                    Intent intent = new Intent(context, TeamDetailActivity.class);
+                    intent.putExtra("team", teamsItem);
+                    context.startActivity(intent);
                 }
             });
             tvTeamName.setText(teamsItem.getStrTeam());
