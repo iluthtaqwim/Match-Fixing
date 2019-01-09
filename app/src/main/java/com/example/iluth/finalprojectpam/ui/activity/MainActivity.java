@@ -66,6 +66,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.btm_fav:
                 replaceFragment(favoriteFragment, teamFragment, matchFragment);
                 break;
+            case R.id.btm_share:
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "Your Body Here";
+                String shareSubject = "Your Subject here";
+
+                sharingIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT,shareSubject);
+                startActivity(Intent.createChooser(sharingIntent, "Share Using"));
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }

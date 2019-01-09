@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -30,10 +30,14 @@
                 android:id="@+id/btnNotify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
                 android:width="50pt"
-                android:background="#55000000"
-                android:text="@string/buat_notif" />
+                android:background="@color/mdtp_button_color"
+                android:text="@string/buat_notif"
+                android:textColor="@android:color/white" />
+
+
+
+
 
         </android.support.v7.widget.Toolbar>
 
@@ -463,4 +467,16 @@
         </android.support.constraint.ConstraintLayout>
 
     </ScrollView>
-</LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="20dp"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_share"
+        tools:ignore="VectorDrawableCompat" />
+</RelativeLayout>

@@ -3,6 +3,7 @@ package com.example.iluth.finalprojectpam.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -27,11 +28,12 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
 
-public class EventDetailActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener,TeamContract.view {
+public class EventDetailActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener,TeamContract.view, View.OnClickListener {
 
     Calendar now = Calendar.getInstance();
     TimePickerDialog tpd;
     DatePickerDialog dpd;
+    FloatingActionButton shareButton;
 
     ToggleButton toggleButton;
     DatabaseHelper mDatabaseHelper;
@@ -99,6 +101,9 @@ public class EventDetailActivity extends AppCompatActivity implements DatePicker
             }
         });
 
+        shareButton = (FloatingActionButton) findViewById(R.id.btnShare);
+        shareButton.setOnClickListener(this);
+
         getSupportActionBar().setTitle(home + " vs " + away);
         getSupportActionBar().setSubtitle(eventsItem.getStrDate());
         teamPresenter = new TeamPresenter(this);
@@ -128,6 +133,22 @@ public class EventDetailActivity extends AppCompatActivity implements DatePicker
                 dpd.show(getFragmentManager(), "Datepickerdialog");
             }
         });
+
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.btnShare) {
+            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBody = "Your Body Here";
+            String shareSubject = "Your Subject here";
+
+            sharingIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+            sharingIntent.putExtra(Intent.EXTRA_SUBJECT,shareSubject);
+            startActivity(Intent.createChooser(sharingIntent, "Share Using"));
+        }
     }
 
     private void loadData() {
@@ -222,4 +243,10 @@ public class EventDetailActivity extends AppCompatActivity implements DatePicker
 
     @Override
     public void hideLoading() {}
+
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
 }
